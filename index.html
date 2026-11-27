@@ -1,155 +1,544 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Barbearia Dias</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barbearia Dias</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #111;
-      color: #fff;
-    }
+<style>
+:root {
+  --bg:#111214;
+  --surface:#191a1c;
+  --card:#202124;
+  --text:#f5f3ef;
+  --muted:#a5a5a5;
+  --accent:#b39a7c;
+  --line:#303133;
+}
 
-    header {
-      padding: 25px;
-      text-align: center;
-      background: #080808;
-      border-bottom: 1px solid #333;
-    }
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-    header h1 {
-      color: #d4a85a;
-      font-size: 32px;
-      letter-spacing: 3px;
-    }
+html {
+  scroll-behavior:smooth;
+  background:var(--bg);
+}
 
-    .hero {
-      text-align: center;
-      padding: 100px 20px;
-    }
+body {
+  font-family:"DM Sans",sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
 
-    .hero h2 {
-      font-size: 42px;
-      margin-bottom: 20px;
-    }
+a {
+  color:inherit;
+  text-decoration:none;
+}
 
-    .hero span {
-      color: #d4a85a;
-    }
+.container {
+  width:min(1120px,90%);
+  margin:auto;
+}
 
-    .hero p {
-      color: #ccc;
-      font-size: 18px;
-      margin-bottom: 35px;
-    }
+header {
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:10;
+  padding:24px 0;
+  border-bottom:1px solid #ffffff20;
+}
 
-    .botao {
-      display: inline-block;
-      padding: 15px 30px;
-      background: #d4a85a;
-      color: #111;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-    }
+.nav {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
 
-    .servicos {
-      padding: 50px 20px;
-      text-align: center;
-    }
+.logo {
+  font-family:"Playfair Display",serif;
+  font-size:25px;
+  letter-spacing:2px;
+}
 
-    .servicos h2 {
-      color: #d4a85a;
-      margin-bottom: 30px;
-      font-size: 28px;
-    }
+.logo span,
+h1 span {
+  color:var(--accent);
+}
 
-    .card {
-      background: #1c1c1c;
-      padding: 25px;
-      margin: 15px auto;
-      max-width: 350px;
-      border: 1px solid #333;
-      border-radius: 10px;
-    }
+nav {
+  display:flex;
+  gap:25px;
+}
 
-    .card h3 {
-      margin-bottom: 12px;
-      color: #d4a85a;
-    }
+nav a {
+  font-size:13px;
+  color:#ddd;
+  transition:.3s;
+}
 
-    .card p {
-      color: #ccc;
-    }
+nav a:hover {
+  color:var(--accent);
+}
 
-    footer {
-      text-align: center;
-      padding: 30px;
-      color: #888;
-      border-top: 1px solid #333;
-    }
+.hero {
+  min-height:720px;
+  height:100vh;
+  max-height:900px;
+  display:flex;
+  align-items:center;
+  position:relative;
+  background:
+    linear-gradient(90deg,#0a0a0af0,#0a0a0a88,#0a0a0a22),
+    linear-gradient(0deg,var(--bg),transparent 35%),
+    url("https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=2000&q=85") center/cover;
+}
 
-    @media (max-width: 600px) {
-      .hero {
-        padding: 70px 20px;
-      }
+.hero-content {
+  max-width:650px;
+  padding-top:65px;
+}
 
-      .hero h2 {
-        font-size: 34px;
-      }
+.eyebrow {
+  color:var(--accent);
+  font-size:12px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  margin-bottom:22px;
+}
 
-      header h1 {
-        font-size: 26px;
-      }
-    }
-  </style>
+h1,h2 {
+  font-family:"Playfair Display",serif;
+  font-weight:500;
+}
+
+h1 {
+  font-size:clamp(48px,8vw,86px);
+  line-height:1.05;
+  margin-bottom:25px;
+}
+
+.hero p {
+  max-width:470px;
+  color:#c6c6c6;
+  line-height:1.8;
+  margin-bottom:35px;
+}
+
+.button {
+  display:inline-block;
+  background:var(--accent);
+  color:#151515;
+  padding:15px 27px;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  transition:.3s;
+}
+
+.button:hover {
+  background:#d0b99b;
+  transform:translateY(-3px);
+}
+
+section {
+  padding:110px 0;
+}
+
+.section-heading {
+  text-align:center;
+  max-width:650px;
+  margin:0 auto 55px;
+}
+
+.section-heading h2 {
+  font-size:clamp(35px,5vw,48px);
+  margin-bottom:16px;
+}
+
+.section-heading p {
+  color:var(--muted);
+  line-height:1.8;
+}
+
+/* SERVIÇOS */
+
+.services-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.service-card {
+  background:var(--card);
+  border:1px solid var(--line);
+  padding:38px 28px;
+  transition:.4s;
+}
+
+.service-card:hover {
+  transform:translateY(-8px);
+  border-color:var(--accent);
+}
+
+.service-number {
+  color:var(--accent);
+  font-size:12px;
+  letter-spacing:2px;
+  margin-bottom:25px;
+}
+
+.service-card h3 {
+  font-family:"Playfair Display",serif;
+  font-size:25px;
+  font-weight:500;
+  margin-bottom:14px;
+}
+
+.service-card p,
+.about-text p {
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.9;
+}
+
+/* GALERIA */
+
+.gallery {
+  background:var(--surface);
+}
+
+.gallery-grid {
+  display:grid;
+  grid-template-columns:1.2fr 1fr 1fr;
+  gap:18px;
+}
+
+.gallery-item {
+  height:390px;
+  overflow:hidden;
+  background:var(--card);
+  border:1px solid var(--line);
+}
+
+.gallery-item img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:brightness(.8);
+  transition:transform .8s,filter .8s;
+}
+
+.gallery-item:hover img {
+  transform:scale(1.08);
+  filter:brightness(1);
+}
+
+/* SOBRE */
+
+.about-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  gap:65px;
+}
+
+.about-image {
+  height:500px;
+  overflow:hidden;
+  border:1px solid var(--line);
+}
+
+.about-image img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.about-text h2 {
+  font-size:clamp(36px,5vw,48px);
+  margin-bottom:22px;
+}
+
+.about-text p {
+  margin-bottom:18px;
+}
+
+/* CONTATO */
+
+.contact {
+  background:var(--surface);
+  text-align:center;
+}
+
+.contact h2 {
+  font-size:clamp(38px,5vw,54px);
+  margin-bottom:20px;
+}
+
+.contact p {
+  color:var(--muted);
+  line-height:1.8;
+  margin-bottom:30px;
+}
+
+footer {
+  padding:28px 0;
+  text-align:center;
+  color:#777;
+  font-size:12px;
+  border-top:1px solid var(--line);
+}
+
+/* ANIMAÇÃO DE ROLAGEM */
+
+.reveal {
+  opacity:1;
+  transform:none;
+}
+
+.js-ready .reveal {
+  opacity:0;
+  transform:perspective(1000px) translateY(45px) rotateX(5deg) scale(.96);
+  transition:opacity .8s ease,transform .9s cubic-bezier(.2,.7,.2,1);
+  transition-delay:var(--delay,0ms);
+}
+
+.js-ready .reveal.visible {
+  opacity:1;
+  transform:perspective(1000px) translateY(0) rotateX(0) scale(1);
+}
+
+.js-ready .gallery-item.reveal {
+  transform:perspective(1000px) translateY(45px) rotateY(5deg) scale(.94);
+}
+
+.js-ready .gallery-item.reveal.visible {
+  transform:perspective(1000px) translateY(0) rotateY(0) scale(1);
+}
+
+@media(max-width:760px) {
+  header { padding:18px 0; }
+  .logo { font-size:21px; }
+  nav { gap:12px; }
+  nav a { font-size:10px; }
+
+  .hero {
+    min-height:650px;
+    background-position:60% center;
+  }
+
+  section { padding:80px 0; }
+
+  .services-grid {
+    grid-template-columns:1fr;
+  }
+
+  .gallery-grid {
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+
+  .gallery-item { height:230px; }
+
+  .gallery-item:first-child {
+    grid-column:span 2;
+    height:300px;
+  }
+
+  .about-grid {
+    grid-template-columns:1fr;
+    gap:35px;
+  }
+
+  .about-image { height:350px; }
+}
+
+@media(max-width:390px) {
+  nav { gap:8px; }
+  nav a { font-size:9px; }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  html { scroll-behavior:auto; }
+  ,::before,*::after {
+    transition-duration:.01ms !important;
+  }
+  .js-ready .reveal,
+  .js-ready .gallery-item.reveal {
+    opacity:1;
+    transform:none;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <header>
-    <h1>BARBEARIA DIAS</h1>
-  </header>
+<header>
+  <div class="container nav">
+    <a href="#inicio" class="logo">BARBEARIA <span>DIAS</span></a>
+    <nav>
+      <a href="#inicio">Início</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#galeria">Galeria</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </div>
+</header>
 
-  <section class="hero">
-    <h2>Seu estilo.<br><span>Seu momento.</span></h2>
-    <p>Mais que um corte, uma experiência.</p>
+<main>
 
-    <a class="botao" href="https://wa.me/5500000000000">
-      AGENDAR HORÁRIO
+<section class="hero" id="inicio">
+  <div class="container">
+    <div class="hero-content reveal">
+      <div class="eyebrow">Estilo e personalidade</div>
+      <h1>Mais que um corte.<br><span>Uma identidade.</span></h1>
+      <p>
+        Seu estilo merece atenção aos detalhes.
+        Experimente um atendimento pensado para valorizar
+        sua personalidade.
+      </p>
+      <a class="button" href="#contato">Agende seu horário</a>
+    </div>
+  </div>
+</section>
+
+<section id="servicos">
+  <div class="container">
+    <div class="section-heading reveal">
+      <div class="eyebrow">O que fazemos</div>
+      <h2>Nossos serviços</h2>
+      <p>Cuidado, precisão e estilo em cada detalhe.</p>
+    </div>
+
+    <div class="services-grid">
+      <article class="service-card reveal">
+        <div class="service-number">01 / SERVIÇO</div>
+        <h3>Corte masculino</h3>
+        <p>Cortes clássicos e modernos, com acabamento preciso e atenção ao seu estilo.</p>
+      </article>
+
+      <article class="service-card reveal" style="--delay:120ms">
+        <div class="service-number">02 / SERVIÇO</div>
+        <h3>Barba</h3>
+        <p>Modelagem e acabamento para valorizar seu rosto e sua personalidade.</p>
+      </article>
+
+      <article class="service-card reveal" style="--delay:240ms">
+        <div class="service-number">03 / SERVIÇO</div>
+        <h3>Combo completo</h3>
+        <p>Uma experiência completa de cuidado, estilo e renovação.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="galeria">
+  <div class="container">
+    <div class="section-heading reveal">
+      <div class="eyebrow">Nosso trabalho</div>
+      <h2>Estilo em cada detalhe</h2>
+      <p>Um pouco do universo da Barbearia Dias.</p>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-item reveal">
+        <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=900&q=85" alt="Corte masculino" loading="lazy">
+      </div>
+
+      <div class="gallery-item reveal" style="--delay:120ms">
+        <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=900&q=85" alt="Detalhe de corte" loading="lazy">
+      </div>
+
+      <div class="gallery-item reveal" style="--delay:240ms">
+        <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=900&q=85" alt="Interior de barbearia" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sobre">
+  <div class="container about-grid">
+    <div class="about-image reveal">
+      <img src="https://images.unsplash.com/photo-1512690459411-b9245aed614b?auto=format&fit=crop&w=1000&q=85" alt="Ambiente de barbearia" loading="lazy">
+    </div>
+
+    <div class="about-text reveal">
+      <div class="eyebrow">Nossa essência</div>
+      <h2>Seu estilo, nossa paixão.</h2>
+      <p>
+        A Barbearia Dias acredita que um bom corte vai além da aparência.
+        É sobre confiança, personalidade e cuidado com cada detalhe.
+      </p>
+      <p>
+        Um ambiente preparado para você renovar o visual e sair
+        com a sensação de estar ainda melhor.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contato">
+  <div class="container reveal">
+    <div class="eyebrow">Estamos esperando você</div>
+    <h2>Seu próximo estilo começa aqui.</h2>
+    <p>Entre em contato e agende seu horário.</p>
+    <a class="button" href="https://wa.me/5500000000000" target="_blank" rel="noopener">
+      Agendar pelo WhatsApp
     </a>
-  </section>
+  </div>
+</section>
 
-  <section class="servicos">
-    <h2>NOSSOS SERVIÇOS</h2>
+</main>
 
-    <div class="card">
-      <h3>Corte Masculino</h3>
-      <p>Estilo e precisão em cada detalhe.</p>
-    </div>
+<footer>
+  <div class="container">
+    © 2026 Barbearia Dias — Todos os direitos reservados.
+  </div>
+</footer>
 
-    <div class="card">
-      <h3>Barba</h3>
-      <p>Acabamento e cuidado para sua aparência.</p>
-    </div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const elementos = document.querySelectorAll(".reveal");
 
-    <div class="card">
-      <h3>Corte + Barba</h3>
-      <p>Visual completo para você.</p>
-    </div>
-  </section>
+  if (!("IntersectionObserver" in window)) {
+    elementos.forEach(function(el) {
+      el.classList.add("visible");
+    });
+    return;
+  }
 
-  <footer>
-    <p>© 2026 Barbearia Dias — Todos os direitos reservados.</p>
-  </footer>
+  document.body.classList.add("js-ready");
+
+  const observador = new IntersectionObserver(function(entradas) {
+    entradas.forEach(function(entrada) {
+      if (entrada.isIntersecting) {
+        entrada.target.classList.add("visible");
+      } else {
+        entrada.target.classList.remove("visible");
+      }
+    });
+  }, {
+    threshold: 0.12,
+    rootMargin: "-5% 0px -5% 0px"
+  });
+
+  elementos.forEach(function(el) {
+    observador.observe(el);
+  });
+});
+</script>
 
 </body>
 </html>
